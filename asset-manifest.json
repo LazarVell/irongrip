@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/irongrip/static/css/main.073c9b0a.css",
+    "main.js": "/irongrip/static/js/main.38815294.js",
+    "static/js/787.a94cf3de.chunk.js": "/irongrip/static/js/787.a94cf3de.chunk.js",
+    "static/media/univerzalfatburner.jpeg": "/irongrip/static/media/univerzalfatburner.d4ab81a7701d7873bba1.jpeg",
+    "static/media/prosuppsisolate.png": "/irongrip/static/media/prosuppsisolate.669981771ba5d06f424c.png",
+    "static/media/GoldStandard.jpg": "/irongrip/static/media/GoldStandard.8e2b9643186393ee36a5.jpg",
+    "static/media/SliderWorkout4.jpg": "/irongrip/static/media/SliderWorkout4.4b0a8e22a23accae51df.jpg",
+    "static/media/oncreatine.jpg": "/irongrip/static/media/oncreatine.7db8a1e3e1b3bdae84f3.jpg",
+    "static/media/bcaa.jpg": "/irongrip/static/media/bcaa.0c016f817fad30b13ad9.jpg",
+    "static/media/youcangohomenow.webp": "/irongrip/static/media/youcangohomenow.2768bb5effe9cac2c030.webp",
+    "static/media/optimumnutritionisolate.webp": "/irongrip/static/media/optimumnutritionisolate.e3c2c4088d07852b69fa.webp",
+    "static/media/purewhey2.jpg": "/irongrip/static/media/purewhey2.00759d774e6c49cb7903.jpg",
+    "static/media/protein-supplements-products.jpg": "/irongrip/static/media/protein-supplements-products.04b3798a165161aa4138.jpg",
+    "static/media/apparel-products.jpg": "/irongrip/static/media/apparel-products.9bd2b098578d4843acdf.jpg",
+    "static/media/Workout3.jpg": "/irongrip/static/media/Workout3.89e63defe1c07ea2cac6.jpg",
+    "static/media/supplements-products.webp": "/irongrip/static/media/supplements-products.2fe63af6300959d27fd7.webp",
+    "static/media/needpurewhey.webp": "/irongrip/static/media/needpurewhey.81e587aebf1a5749efae.webp",
+    "static/media/advancemusclemasswhey.webp": "/irongrip/static/media/advancemusclemasswhey.046986449df471539cfa.webp",
+    "index.html": "/irongrip/index.html",
+    "main.073c9b0a.css.map": "/irongrip/static/css/main.073c9b0a.css.map",
+    "main.38815294.js.map": "/irongrip/static/js/main.38815294.js.map",
+    "787.a94cf3de.chunk.js.map": "/irongrip/static/js/787.a94cf3de.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.38815294.js"
+  ]
+}

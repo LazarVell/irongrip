@@ -3,7 +3,7 @@ import { FaHeart, FaSearch, FaShoppingCart } from 'react-icons/fa';
 import styled from 'styled-components';
 
 
-const Info = styled.div`
+const Wrapper = styled.div`
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -15,7 +15,13 @@ const Info = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     transition: all 0.5s ease;
+
+`
+
+const Info = styled.div`
+    display: flex;
 `
 
 const Container = styled.div`
@@ -28,7 +34,7 @@ const Container = styled.div`
     justify-content: center;
     position: relative;
 
-    &:hover ${Info}{
+    &:hover ${Wrapper}{
         opacity: 1;
     }
 `;
@@ -57,10 +63,21 @@ const Icon = styled.div`
     }
 `
 
+const Title = styled.h1`
+    color: yellow;
+    width: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0,0,0, 0.4);
+`
+
 const PopularSection = ({item}) => {
   return (
       <Container>
           <Image src={item.img} />
+          <Wrapper>
+          <Title>{item.title}</Title>
           <Info>
               <Icon>
                  <FaShoppingCart />
@@ -72,6 +89,7 @@ const PopularSection = ({item}) => {
                  <FaHeart />
               </Icon>  
           </Info>
+          </Wrapper>
       </Container>
   );
 };

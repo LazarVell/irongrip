@@ -47,34 +47,42 @@ export const products = [
 export const mostPopular = [
     {
         id: 1,
+        title: 'Optimum Nutrition Gold Standard Isolate',
         img: require('../images/optimumnutritionisolate.webp'),
     },
     {
         id: 2,
+        title: ' Need Pure Whey Protein Chocolate ',
         img: require('../images/needpurewhey.webp'),
     },
     {
         id: 3,
+        title: 'Advance Muscle Mass Ultra Premium Whey',
         img: require('../images/advancemusclemasswhey.webp'),
     },
     {
         id: 4,
+        title: ' Pro Supps Advanced Whey Isolate ',
         img: require('../images/prosuppsisolate.png'),
     },
     {
         id: 5,
+        title: 'Optimum Nutrition Creatine Powder',
         img: require('../images/oncreatine.jpg'),
     },
     {
         id: 6,
+        title: 'Universal Fat Burner Sport Series',
         img: require('../images/univerzalfatburner.jpeg'),
     },
     {
         id: 7,
+        title: 'Nutrend BCAA 4 : 1 : 1 Tabs',
         img: require('../images/bcaa.jpg'),
     },
     {
         id: 8,
+        title: 'You can go home now workout t-shirt',
         img: require('../images/youcangohomenow.webp'),
     },
 ]

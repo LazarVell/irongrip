@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/irongrip/static/css/main.073c9b0a.css",
-    "main.js": "/irongrip/static/js/main.0154d32f.js",
+    "main.js": "/irongrip/static/js/main.d39f828f.js",
     "static/js/787.a94cf3de.chunk.js": "/irongrip/static/js/787.a94cf3de.chunk.js",
     "static/media/univerzalfatburner.jpeg": "/irongrip/static/media/univerzalfatburner.d4ab81a7701d7873bba1.jpeg",
     "static/media/prosuppsisolate.png": "/irongrip/static/media/prosuppsisolate.669981771ba5d06f424c.png",
@@ -21,11 +21,11 @@
     "static/media/advancemusclemasswhey.webp": "/irongrip/static/media/advancemusclemasswhey.046986449df471539cfa.webp",
     "index.html": "/irongrip/index.html",
     "main.073c9b0a.css.map": "/irongrip/static/css/main.073c9b0a.css.map",
-    "main.0154d32f.js.map": "/irongrip/static/js/main.0154d32f.js.map",
+    "main.d39f828f.js.map": "/irongrip/static/js/main.d39f828f.js.map",
     "787.a94cf3de.chunk.js.map": "/irongrip/static/js/787.a94cf3de.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.0154d32f.js"
+    "static/js/main.d39f828f.js"
   ]
 }

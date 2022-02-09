@@ -1,14 +1,15 @@
 import './App.css';
 import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import slider from './components/SliderArrow';
+import Login from './pages/Login';
+import Product from './pages/Product';
+import ProductList from './pages/ProductList';
+import Register from './pages/Register';
+
 
 
 const App = () => {
   return (
-    <div>
-      <Home></Home>
-  </div>
+    <Home/>
   )
 };
 

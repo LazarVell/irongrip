@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Newsletter from '../components/Newsletter';
 import PopularItems from '../components/PopularItems';
 import Products from '../components/Products';
+import { mobile } from '../responsive';
+import { useLocation } from "react-router-dom"
 
 const Container = styled.div`
   
 `;
 
 const Title = styled.h1`
-  
+  text-align: center;
 `;
 
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({flexDirection: "column"})};
 `;
 
 const Filter = styled.div`
@@ -32,6 +35,7 @@ const FilterText = styled.span`
 const Select = styled.select`
   padding: 10px;
   margin-right: 20px;
+  ${mobile({margin: "5px 0px"})};
 `;
 
 const Option = styled.option`
@@ -39,46 +43,57 @@ const Option = styled.option`
 `;
 
 const ProductList = () => {
+  //location hook allows us to filter out the category from the URL
+  const location = useLocation();
+  const category = location.pathname.split("/")[2];
+
+  const [filters,setFilters] = useState({});
+
+  const [sort, setSort] = useState("newest")
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    })
+  }
+  //console.log(filters);
   return (
     <Container>
       <Navbar />
-      <Title>Dresses</Title>
+      <Title>{category}</Title>
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option disabled selected>
+          <Select name="types" onChange={handleFilters}>
+            <Option disabled>
               Type
             </Option>
-            <Option>Whey Protein</Option>
-            <Option>Isolate Protein</Option>
-            <Option>Creatine</Option>
-            <Option>Fat Burner</Option>
-            <Option>BCAA</Option>
+            <Option>Protein</Option>
+            <Option>Supplements</Option>
             <Option>Apparel</Option>
           </Select>
-          <Select>
-          <Option disabled selected>
+          <Select name="size" onChange={handleFilters}>
+          <Option disabled>
               Size
             </Option>
-            <Option>Small - 300g</Option>
-            <Option>Medium - 500g</Option>
-            <Option>Large - 1kg</Option>
-            <Option>Extra large - 1.5kg</Option>
+            <Option>S</Option>
+            <Option>M</Option>
+            <Option>L</Option>
+            <Option>XL</Option>
         </Select>
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select>
-          <Option selected>
-              Newest
-            </Option>
-            <Option>Price (Ascending)</Option>
-            <Option>Price (Descending)</Option>
+          <Select onChange ={e => setSort(e.target.value)}>
+          <Option value="newest">Newest</Option>
+            <Option value="asc">Price (Ascending)</Option>
+            <Option value="desc">Price (Descending)</Option>
         </Select>
         </Filter>
       </FilterContainer>
-      <PopularItems />
+      <PopularItems category={category} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>

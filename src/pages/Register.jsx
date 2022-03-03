@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import arnold from '../images/ArnoldSmall.jpeg'
+import { mobile } from '../responsive';
 
 const Container = styled.div`
     width: 100vw;
@@ -11,11 +12,13 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     color: yellow;
+    ${mobile({height:"100%" , backgroundPosition: "right center"})};
 `;
 const Wrapper = styled.div`
     width: 40%;
     padding: 20px;
     background: rgba(0,0,0,0.4);
+    ${mobile({width: "80%"})};
 
 `;
 const Form = styled.form`

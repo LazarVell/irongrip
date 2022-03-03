@@ -1,55 +1,59 @@
 import React from 'react';
 import { IoIosSend } from 'react-icons/io';
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
-height: 60vh;
-background-color: black;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
+  height: 60vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `
 
 const Title = styled.h1`
-font-size: 70px;
-margin-bottom: 20px;
-color: yellow;
+  font-size: 70px;
+  margin-bottom: 20px;
+  color: yellow;
+  ${mobile({fontSize: "40px"})};
 `
 
 const Description = styled.div`
-font-size: 24px;
-font-weight: bold;
-margin-bottom: 20px;
-color: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: yellow;
+  ${mobile({fontSize:"18px", textAlign:"center"})};
 `
 
 
 const InputContainer = styled.div`
-width: 50%;
-height: 40px;
-background-color: black;
-display: flex;
-justify-content: space-between;
-border: 3px solid yellow;
+  width: 50%;
+  height: 40px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  border: 3px solid yellow;
+  ${mobile({width: "90%", margin:"0px 5px"})};
 `
 
 const Input = styled.input`
-border: none;
-flex: 9;
-&:focus {
-    border: none;
-    outline: none;
-};
-padding-left: 20px;
+  border: none;
+  flex: 9;
+  &:focus {
+      border: none;
+      outline: none;
+  };
+  padding-left: 20px;
 `
 
 const Button = styled.button`
-flex: 1;
-border: none;
-color: black;
-background-color: yellow;
-font-size: 20px;
+  flex: 1;
+  border: none;
+  color: black;
+  background-color: yellow;
+  font-size: 20px;
 `
 
 

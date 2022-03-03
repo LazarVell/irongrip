@@ -4,13 +4,13 @@ export const sliderItems = [
         id: 1,
         img: require('../images/GoldStandard.jpg'),
         title: 'OPTIMUM NUTRITION',
-        desc: 'Fine-tuned isolate that delivers nourishment to your muscles QUICKLY',
+        desc: 'Fine-tuned isolate that delivers nourishment to your muscles QUICKLY.',
     },
     {
         id: 2,
         img: require('../images/purewhey2.jpg'),
         title: 'NEED PURE WHEY',
-        desc: 'Try our daring flavours of Peanut butter and Jelly, Strawberry cake or MELTED CHOCOLATE BROWNIE!',
+        desc: 'PURE WHEY is made with the best quality raw material in its highest concentration without additives and the best taste you can imagine.',
     },
     {
         id: 3,
@@ -30,17 +30,20 @@ export const products = [
     {
         id: 1,
         img: require('../images/protein-supplements-products.jpg'),
-        title: 'PROTEIN & GAINERS',
+        title: 'PROTEINS',
+        category: 'Protein'
     },
     {
         id: 2,
         img: require('../images/supplements-products.webp'),
         title: 'SUPPLEMENTS',
+        category: 'Supplements'
     },
     {
         id: 3,
         img: require('../images/apparel-products.jpg'),
         title: 'APPAREL',
+        category: 'Apparel'
     },
 ]
 
@@ -52,7 +55,7 @@ export const mostPopular = [
     },
     {
         id: 2,
-        title: ' Need Pure Whey Protein Chocolate ',
+        title: ' Need Pure Whey Protein Powder ',
         img: require('../images/needpurewhey.webp'),
     },
     {

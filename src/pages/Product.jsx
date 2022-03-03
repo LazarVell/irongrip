@@ -1,10 +1,16 @@
-import { Add, Remove } from '@material-ui/icons';
-import React from 'react';
+import { Add, ColorLensOutlined, Remove } from '@material-ui/icons';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import Newsletter from '../components/Newsletter';
 import PopularItems from '../components/PopularItems';
+import { mobile } from '../responsive';
+import { useLocation } from 'react-router-dom';
+import { React, useState, useEffect } from 'react';
+import { publicRequest } from './requestMethods';
+import { addProduct } from '../redux/cartRedux';
+import { useDispatch } from "react-redux";
+
 
 const Container = styled.div`
 
@@ -13,10 +19,15 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 30px;
   display: flex;
+  ${mobile({padding: "10px", flexDirection:"column" })};
 `;
 
 const ImgContainer = styled.div`
   flex: 1;
+  height: 100vh;
+  max-height: 700px;
+  margin: 100px;
+  ${mobile({margin: "10px"})};
 `;
 
 const Image = styled.img`
@@ -29,10 +40,12 @@ const InfoContainer = styled.div`
   padding: 0px 50px;
   background: rgba(0,0,0,0.8);
   color: yellow;
+  ${mobile({padding: "10px" })};
 `;
 
 const Title = styled.h1`
   font-weight: 20;
+  margin-top: 20px;
 `;
 
 const Description = styled.p`
@@ -50,11 +63,13 @@ const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
+  ${mobile({flexDirection:"column" })};
 `;
 
 const Filter = styled.div`
   display: flex;
   align-items: center;
+  ${mobile({margin: "10px 0px" })};
 `;
 
 const FilterTitle = styled.span`
@@ -79,6 +94,7 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({width: "100%" })};
 `;
 
 const AmountContainer = styled.div`
@@ -114,47 +130,81 @@ const AddRemoveStyle = styled.div`
   margin: 0px 5px;
 `
 const Product = () => {
-  return (
+
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  //console.log(id);
+
+  const [product, setProduct] = useState(null); 
+  const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("");
+  const dispatch = useDispatch();
+
+
+ useEffect(() => {
+    const getProduct = async () => {
+      try {
+        setLoading(true);
+        const res = await publicRequest.get("/products/find/"+id);
+        setProduct(res.data);;
+      } catch {}
+
+    };
+    getProduct().then(() => setLoading(false)).then(() => console.log(product));
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity>1 && setQuantity(quantity -1);
+    } else {
+      quantity>-1 && setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    //cart update - redux toolkit
+    dispatch(addProduct({...product.product, quantity, size}));
+    //product:product.product, price:product.product.price * quantity
+    //...product.product, quantity, size
+  }
+
+  if (loading) { 
+    return (<div>Loading...</div>)
+  }
+
+return (
         <Container>
           <Navbar/>
-          <Wrapper>
+          <Wrapper> 
             <ImgContainer>
-            <Image src={require('../images/optimumnutritionisolate.webp')} />
+            <Image src={product.product.img} />
             </ImgContainer>
             <InfoContainer>
-              <Title>Optimum Nutrition Gold Standard Isolate</Title>
-              <Description>THE DREAM</Description>
-              <Price> $ 20</Price>
+              <Title>{product.product.title}</Title>
+              <Description>{product.product.description}</Description>
+              <Price> ${product.product.price}</Price>
               <FilterContainer>
-              <Filter>
-                    <FilterTitle>Flavour</FilterTitle>
-                    <FilterSize>
-                        <FilterOption>Chocolate</FilterOption>
-                        <FilterOption>Vanilla</FilterOption>
-                        <FilterOption>Cookie Cream</FilterOption>
-                        <FilterOption>Brownie</FilterOption>
-                    </FilterSize>
-                  </Filter>
                   <Filter>
                     <FilterTitle>Size</FilterTitle>
-                    <FilterSize>
-                        <FilterOption>Small - 300g</FilterOption>
-                        <FilterOption>Medium - 500g</FilterOption>
-                        <FilterOption>Large - 1kg</FilterOption>
-                        <FilterOption>Extra large - 1.5kg</FilterOption>
+                    <FilterSize onChange={(e) => setSize(e.target.value)}>
+                      {product.product.size.map((size) =>(
+                        <FilterOption key={size}>{size}</FilterOption>
+                      ))}
                     </FilterSize>
                   </Filter>
               </FilterContainer>
               <AddContainer>
                 <AmountContainer>
-                  <AddRemoveStyle><Remove /></AddRemoveStyle>
-                  <Amount>1</Amount>
-                  <AddRemoveStyle><Add /></AddRemoveStyle>
+                  <AddRemoveStyle><Remove onClick={() => handleQuantity("dec")}/></AddRemoveStyle>
+                  <Amount>{quantity}</Amount>
+                  <AddRemoveStyle><Add onClick={() => handleQuantity("inc")}/></AddRemoveStyle>
                 </AmountContainer>
-                <Button>ADD TO CART</Button>
+                <Button onClick={handleClick}>ADD TO CART</Button>
               </AddContainer>
             </InfoContainer>
           </Wrapper>
+
           <PopularItems/>
           <Newsletter/>
           <Footer/>

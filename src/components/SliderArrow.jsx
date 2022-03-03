@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { sliderItems } from './data';
 import { useState } from 'react';
+import { mobile } from '../responsive';
 
 
 const Container = styled.div`
@@ -60,11 +61,13 @@ align-items: center;
 
         const Image = styled.img`
         height: 100%;
+        ${mobile({width: "100vw"})};
         `;
 
         const ImgInfo = styled.div`
         flex: 1;
         padding: 50px;
+        ${mobile({display: "none"})};
         `;
             const Tittle = styled.h1`
                 color: yellow;
@@ -111,7 +114,7 @@ const SliderArrow = () => {
           {sliderItems.map(item => (
           <Slide>
             <ImgContainer>
-                <Image src={item.img}>
+                <Image src={item.img} key={item.id}>
                 </Image>
             </ImgContainer>    
                     <ImgInfo>

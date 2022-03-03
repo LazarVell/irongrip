@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import {FaSearch, FaShoppingCart} from "react-icons/fa";
 import { Badge } from '@material-ui/core';
+import {mobile} from "../responsive";
+import { red } from '@material-ui/core/colors';
+import { useSelector } from 'react-redux';
+import {Link} from "react-router-dom";
 
 // STYLE COMPONENTS
 const Container = styled.div`
@@ -10,7 +14,6 @@ const Container = styled.div`
     background-color: black;
     color: white;
     overflow:auto;
-
     `;
 
 
@@ -18,6 +21,7 @@ const Wrapper = styled.div`
 padding: 10px 20px;
 display: flex;
 justify-content: space-between;
+${mobile({flexDirection:"column"})};
 `;
 
 const Left = styled.div`
@@ -53,6 +57,7 @@ text-align: center;`;
         font-size: 64px;
         line-height: 48px;
         padding-top:5px;
+        ${mobile({fontSize:"50px", lineHeight:"40px"})};
     `
     const HeaderLogo2 = styled.div`
         font-weight: bold;
@@ -60,12 +65,14 @@ text-align: center;`;
         color: red;
         font-size:50px;
         line-height:41px;
+        ${mobile({fontSize:"36px", lineHeight:"34px"})};
     `
     const HeaderLogo3 = styled.div`
         color: yellow;
         font-size: 18px;
         white-space: nowrap;
         font-weight: bold;
+        ${mobile({fontSize:"13px", lineHeight:"10px"})};
     `
 
 const Right = styled.div`
@@ -74,6 +81,7 @@ display:flex;
 flex-direction: column;
 align-items: flex-end;
 justify-content: flex-end;
+${mobile({alignItems:"center", justifyContent:"center"})};
 `;
     const MenuItem = styled.div`
         font-size: 20px;
@@ -82,14 +90,18 @@ justify-content: flex-end;
         padding: 10px;
         &:hover{ color: orange; };
     `
+
 const Navbar = () => {
+    //react-redux - connecting the cart quantity with the navbar badge cart
+    const quantity = useSelector((state) => state.cart.quantity)
+    console.log(quantity);
   return (
   <Container>
      <Wrapper>
          <Left>
              <Language>EN</Language>
              <SearchContainer>
-                 <Input />
+                 <Input placeholder="Search"/>
                  <FaSearch />
              </SearchContainer>
          </Left>
@@ -101,13 +113,16 @@ const Navbar = () => {
          <Right>
              <MenuItem>REGISTER</MenuItem>
              <MenuItem>SIGN-IN</MenuItem>
-             <MenuItem><Badge badgeContent={3} color="Primary">
+             <Link to="/cart">
+             <MenuItem><Badge badgeContent={quantity} color="primary">
                  <FaShoppingCart />
-                 </Badge></MenuItem>
+                 </Badge>
+                 </MenuItem>
+                 </Link>
          </Right>
      </Wrapper>
   </Container>
-  )
+  );
 };
 
 export default Navbar;

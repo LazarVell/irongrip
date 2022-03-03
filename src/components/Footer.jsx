@@ -3,11 +3,13 @@ import { FaFacebook, FaInstagram, FaMapMarkerAlt, FaTwitch, FaTwitter } from 're
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
 display: flex;
 background-color:#282d32;
 color: Yellow;
+${mobile({flexDirection: "column"})};
 `
 
 const Left = styled.div`
@@ -40,6 +42,9 @@ padding: 20px;
     align-items: center;
     justify-content: center;
     font-size: 25px;
+    &:hover{
+        transform: scale(1.2);
+    }
     `
 
 const Center = styled.div`
@@ -49,6 +54,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+${mobile({backgroundColor: "#838383"})};
+//while we wanted a darker gray, darkgray is lighter than gray. so we used a hex color
 `
 
     const Title = styled.h3`

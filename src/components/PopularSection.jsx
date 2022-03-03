@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaHeart, FaSearch, FaShoppingCart } from 'react-icons/fa';
 import styled from 'styled-components';
+import { mobile } from '../responsive';
+import {Link} from "react-router-dom";
 
 
 const Wrapper = styled.div`
@@ -33,6 +35,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
+    ${mobile({minWidth: "100vw", margin:"0px"})};
 
     &:hover ${Wrapper}{
         opacity: 1;
@@ -83,7 +86,9 @@ const PopularSection = ({item}) => {
                  <FaShoppingCart />
               </Icon>
               <Icon>
+                  <Link to={`/product/${item._id}`}>
                  <FaSearch />
+                 </Link>
               </Icon>  
               <Icon>
                  <FaHeart />
